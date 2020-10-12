@@ -1,7 +1,7 @@
 Traveler App
 
 Post (Trip) *join table cities & users
-    - belongs_to :traveler
+    - belongs_to :user
     - has_many :comments
     - has_many :users through :comments
     - belongs_to :city
@@ -20,11 +20,11 @@ User (Traveler)
 
 Comment *join table users & trips
     - belongs_to :user
-    - belongs_to :post
+    - belongs_to :trips
     - content
     
 Cities (Catergories)
     - name
     - has_many :trips
-    - has_many :travelers, through :trips
+    - has_many :users, through :trips
     
