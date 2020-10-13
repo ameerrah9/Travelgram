@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :cities
+  # write custom routes here
+  get '/signup' => 'users#new'
+  
+  #resources :cities
   resources :comments
   resources :users
   resources :trips

@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 2020_10_11_215231) do
   create_table "trips", force: :cascade do |t|
     t.string "destination"
     t.text "content"
-    t.integer "traveler_id", null: false
+    t.integer "user_id", null: false
     t.integer "city_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["city_id"], name: "index_trips_on_city_id"
-    t.index ["traveler_id"], name: "index_trips_on_traveler_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -50,5 +50,5 @@ ActiveRecord::Schema.define(version: 2020_10_11_215231) do
   add_foreign_key "comments", "trips"
   add_foreign_key "comments", "users"
   add_foreign_key "trips", "cities"
-  add_foreign_key "trips", "travelers"
+  add_foreign_key "trips", "users"
 end
