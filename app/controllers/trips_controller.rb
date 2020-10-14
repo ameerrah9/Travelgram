@@ -19,7 +19,7 @@ class TripsController < ApplicationController
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
       @trips = @user.trips
     else
-      @error = "That trip never happened" if params[:user_id]
+      @error = "User doesn't exist" if params[:user_id]
       @trips = Trip.all
     end
   end
