@@ -12,13 +12,16 @@ Rails.application.routes.draw do
   #logout route
   delete '/logout' => 'sessions#destroy'
 
+  #omniauth callback route
+  get '/auth/:provider/callback' => 'sessions#omniauth'
+
   #resources :cities
    resources :trips do
      resources :comments
    end
   resources :comments
   resources :users do
-    resources :trips, only [:new, :create, :index]
+    resources :trips, only: [:new, :create, :index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
