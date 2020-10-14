@@ -1,8 +1,11 @@
 class User < ApplicationRecord
-  has_many :trips
+  has_many :blogs
   has_many :comments
   has_many :commented_trips, through: :comments,
-    source: :trip
+    source: :blog
   has_secure_password
-  #has_many :cities, through :trips
+  has_many :cities, through: :blogs
+
+  validates :email, :username, presence: true
+
 end

@@ -1,0 +1,31 @@
+<h1>New Blog!</h1>
+
+<%= form_for(@blog) do |f| %>
+
+  <%= f.label "Choose your City:" %>
+  <%= f.collection_select :city_id, City.all, :id, :name, include_blank: true %><br>
+  <br>
+
+  <p>If you don't see your city, create one here:
+    <%= f.fields_for :cities do |c| %>
+      <%= c.text_field :name %>
+    <% end %>
+  </p>
+
+  <br>
+  <br>
+
+  <%= f.label :title %><br>
+  <br>
+  <%= f.text_field :title %><br>
+  <br>
+
+  <%= f.label :content %><br>
+  <br>
+  <%= f.text_area :content %><br>
+  <br>
+
+  <%= f.submit %><br>
+  <br>
+
+<% end %>

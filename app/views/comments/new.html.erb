@@ -1,5 +1,5 @@
 <% if @comment.post %>
-  <h1>New Comment for <%=@comment.trip.destination %>!</h1>
+  <h1>New Comment for <%=@comment.blog.title %>!</h1>
 <% else %>
   <h1>New Comment!</h1>
 <% end %>
@@ -16,13 +16,13 @@
   </div>
 <% end %>
 
-<%= form_for([@comment.trip,@comment]) do |f|%>
+<%= form_for([@comment.blog,@comment]) do |f|%>
 
-  <%if !@comment.trip %>
-    <%= f.label :trip %>
-    <%= f.collection_select :trip_id, Trip.all, :id, :destination %>
+  <%if !@comment.blog %>
+    <%= f.label :blog %>
+    <%= f.collection_select :blog_id, Blog.all, :id, :title %>
   <% else %>
-    <% f.hidden_field :trip_id %>
+    <% f.hidden_field :blog_id %>
   <% end %>
   <br>
   <br>

@@ -1,0 +1,9 @@
+<h1>All Blogs</h1>
+
+<div>
+  <% @blogs.each do |t| %>
+    <div>
+      <%= link_to t.title, blog_path(t) %> • <%= t.comments.size %> <p>Comments</p>
+    </div>
+  <% end %>
+</div>

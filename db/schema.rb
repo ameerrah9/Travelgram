@@ -12,6 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2020_10_11_215231) do
 
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "city_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["city_id"], name: "index_blogs_on_city_id"
+    t.index ["user_id"], name: "index_blogs_on_user_id"
+  end
+
   create_table "cities", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -21,22 +32,11 @@ ActiveRecord::Schema.define(version: 2020_10_11_215231) do
   create_table "comments", force: :cascade do |t|
     t.string "content"
     t.integer "user_id", null: false
-    t.integer "trip_id", null: false
+    t.integer "blog_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["trip_id"], name: "index_comments_on_trip_id"
+    t.index ["blog_id"], name: "index_comments_on_blog_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
-  end
-
-  create_table "trips", force: :cascade do |t|
-    t.string "destination"
-    t.text "content"
-    t.integer "user_id", null: false
-    t.integer "city_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["city_id"], name: "index_trips_on_city_id"
-    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,8 +47,8 @@ ActiveRecord::Schema.define(version: 2020_10_11_215231) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "comments", "trips"
+  add_foreign_key "blogs", "cities"
+  add_foreign_key "blogs", "users"
+  add_foreign_key "comments", "blogs"
   add_foreign_key "comments", "users"
-  add_foreign_key "trips", "cities"
-  add_foreign_key "trips", "users"
 end

@@ -2,19 +2,19 @@ class CommentsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index
-    if params[:trip_id] && @trip = Trip.find_by_id(params[:trip_id])
-      @comments = @trip.comments
+    if params[:blog_id] && @blog = Blog.find_by_id(params[:blog_id])
+      @comments = @blog.comments
     else
-      @error = "That trip never happened" if params[:trip_id]
+      @error = "That blog doesn't exist" if params[:blog_id]
       @comments = Comment.all
     end
   end
 
   def new
-    if params[:trip_id] && @trip = Trip.find_by_id(params[:trip_id])
-      @comment = @trip.comments.build
+    if params[:blog_id] && @blog = Blog.find_by_id(params[:blog_id])
+      @comment = @blog.comments.build
     else
-      @error = "That trip never happened" if params[:trip_id]
+      @error = "That blog doesn't exist" if params[:blog_id]
       @comment = Comment.new
     end
   end
@@ -48,6 +48,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :trip_id)
+    params.require(:comment).permit(:content, :blog_id)
   end
 end

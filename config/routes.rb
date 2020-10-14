@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback' => 'sessions#omniauth'
 
   #resources :cities
-   resources :trips do
+   resources :blogs do
      resources :comments
    end
   resources :comments
   resources :users do
-    resources :trips, only: [:new, :create, :index]
+    resources :blogs, only: [:new, :create, :index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
