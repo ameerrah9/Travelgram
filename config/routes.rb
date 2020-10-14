@@ -15,10 +15,10 @@ Rails.application.routes.draw do
   #resources :cities
   resources :comments
   resources :users do
-    resources :trips, only [:index]
+    resources :trips, only [:new, :create, :index]
   end
   resources :trips do
-    resources :comments, only [:index]
+    resources :comments, only [:new, :create, :index]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

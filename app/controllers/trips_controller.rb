@@ -14,6 +14,16 @@ class TripsController < ApplicationController
     end
   end
 
+  def index
+
+    if params[:user_id] && @user = User.find_by_id(params[:user_id])
+      @trips = @user.trips
+    else
+      @error = "That trip never happened" if params[:user_id]
+      @trips = Trip.all
+    end
+  end
+
   private
 
   def trip_params

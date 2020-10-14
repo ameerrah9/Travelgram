@@ -10,5 +10,5 @@
 <h4>Comments:</h4>
 <% @trip.comments.each do |c| %>
   <div><%= c.user.username %> </div>
-  <div><%= link_to c.content, comment_path(c) %> </div>
+  <div><%= link_to c.content, trip_comment_path(@trip.c) %> </div>
 <% end %>

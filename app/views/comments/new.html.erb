@@ -1,13 +1,28 @@
-<% if @trip %>
-  <h1>New Comment for <%=@trip.destination %>!</h1>
+<% if @comment.post %>
+  <h1>New Comment for <%=@comment.trip.destination %>!</h1>
 <% else %>
   <h1>New Comment!</h1>
 <% end %>
 
-<%= form_for([@trip,@comment]) do |f|%>
-  <%if !@trip %>
+<% if @comment.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+    <ul>
+      <% @comment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for([@comment.trip,@comment]) do |f|%>
+
+  <%if !@comment.trip %>
     <%= f.label :trip %>
     <%= f.collection_select :trip_id, Trip.all, :id, :destination %>
+  <% else %>
+    <% f.hidden_field :trip_id %>
   <% end %>
   <br>
   <br>
