@@ -1,0 +1,20 @@
+<% if @trip %>
+  <h1>New Comment for <%=@trip.destination %>!</h1>
+<% else %>
+  <h1>New Comment!</h1>
+<% end %>
+
+<%= form_for([@trip,@comment]) do |f|%>
+  <%if !@trip %>
+    <%= f.label :trip %>
+    <%= f.collection_select :trip_id, Trip.all, :id, :destination %>
+  <% end %>
+  <br>
+  <br>
+
+  <%= f.label :content %>
+  <%= f.text_area :content %><br>
+  <br>
+  <% f.submit %>
+
+<% end %>

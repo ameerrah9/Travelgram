@@ -11,7 +11,12 @@ class CommentsController < ApplicationController
   end
 
   def new
-    @comment = Comment.new
+    if params[:trip_id] && @trip = Trip.find_by_id(params[:trip_id])
+      @comment = @trip.comments.build
+    else
+      @error = "That trip never happened" if params[:trip_id]
+      @comment = Comment.new
+    end
   end
 
   def create
