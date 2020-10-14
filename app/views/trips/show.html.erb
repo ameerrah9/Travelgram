@@ -1,0 +1,13 @@
+<h1><%= @trip.destination %></h1>
+<h2>Traveler: <%=@trip.user.username %></h2>
+
+<div><%= @trip.content %></div>
+<div><%= @trip.city %></div>
+
+<p><%- link_to 'See All Comments', trip_comments_path %></p>
+
+<h4>Comments:</h4>
+<% @trip.comments.each do |c| %>
+  <div><%= c.user.username %> </div>
+  <div><%= link_to c.content, comment_path(c) %> </div>
+<% end %>
