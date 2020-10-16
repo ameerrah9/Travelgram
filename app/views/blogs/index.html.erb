@@ -1,9 +1,14 @@
-<h1>All Blogs</h1>
+<h1><%= index_header %></h1><br>
 
-<div>
-  <% @blogs.each do |t| %>
-    <div>
-      <%= link_to t.title, blog_path(t) %> • <%= t.comments.size %> <p>Comments</p>
-    </div>
-  <% end %>
-</div>
+<%= form_tag("/blogs", method: "get") do %>
+  <%= label_tag(:q, "Search for Blogs Here:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %><br>
+
+<% if @blogs.empty? %>
+  <h2>No blogs yet, create a blog now! <%= link_to "Share", new_blog_path %></h2>
+<% else %>
+  <%= render partial: "blogs", locals: {blogs: @blogs} %>
+
+<% end %>

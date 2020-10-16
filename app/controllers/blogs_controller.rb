@@ -1,8 +1,26 @@
-class BlogController < ApplicationController
+class BlogsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def new
-    @blog = Blog.new
+    if params[:user_id] && @user = User.find_by_id(params[:user_id])
+      @blog = @user.blogs.build
+    else
+      @blog = Blog.new
+    end
+    @blog.build_city
+  end
+
+  def index
+
+    if params[:user_id] && @user = User.find_by_id(params[:user_id])
+      @blogs = @user.blogs.alpha
+    else
+      @error = "User doesn't exist" if params[:user_id]
+      @blogs = Blog.alpha
+    end
+    if params[:q] && !params[:q].empty?
+      @blogs = @blogs.search(params[:q].downcase)
+    end
   end
 
   def create
@@ -14,14 +32,10 @@ class BlogController < ApplicationController
     end
   end
 
-  def index
-
-    if params[:user_id] && @user = User.find_by_id(params[:user_id])
-      @blogs = @user.blogs.alpha
-    else
-      @error = "User doesn't exist" if params[:user_id]
-      @blogs = Blog.alpha
-    end
+  def show
+    redirect_if_not_logged_in
+    @blog = Blog.find_by_id(params[:id])
+    redirect_to '/' if !@blog
   end
 
   private

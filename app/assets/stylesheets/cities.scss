@@ -1,3 +1,13 @@
 // Place all the styles related to the cities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+@import "bootstrap";
+
+body {
+  background-color: #F5A65B;
+  color: 3FDF6EA !important;
+}
+
+.title {
+  font-family: "Monoton";
+}

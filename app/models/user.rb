@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :cities, through: :blogs
 
-  validates :email, :username, presence: true
+  validates :email, :username, presence: true, uniqueness: true
+  validates :username, uniqueness: true
 
 end
