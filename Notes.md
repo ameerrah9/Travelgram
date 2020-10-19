@@ -33,4 +33,4 @@ Cities (Catergories)
  Assignments:
     - Work on being able to create a city with a blog if the city doesn't exist
     - Work on being able to go to a users blog page (see only their blogs)
-    
+    - Layout Page <%= link_to "View My Blogs", user_blog_path %> •

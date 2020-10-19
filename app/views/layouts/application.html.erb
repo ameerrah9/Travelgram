@@ -14,9 +14,8 @@
     <% if logged_in? %>
       <%= link_to "Add a Blog", new_blog_path %> •
       <%= link_to "View All Blogs", blogs_path %> •
-      <%= link_to "View My Blogs", user_blog_path %> •
       <%= link_to "Home", root_path %> •
-      <%= link_to "Logout", logout_path, method: "delete" %> •
+      <%= link_to "Logout", logout_path, method: "delete" %>
 
   <% else %>
       <%= link_to "Log In", login_path %> •
