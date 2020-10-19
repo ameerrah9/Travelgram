@@ -8,10 +8,6 @@
   <%= f.collection_select :city_id, City.all, :id, :name, include_blank: true %><br>
   <br>
 
-  <p>If you don't see your city, create one here:
-    <%= f.fields_for :cities do |c| %>
-      <%= c.text_field :name %>
-    <% end %>
   </p>
 
   <br>

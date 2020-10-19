@@ -11,7 +11,6 @@ class BlogsController < ApplicationController
   end
 
   def index
-
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
       @blogs = @user.blogs.alpha
     else
