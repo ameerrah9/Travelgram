@@ -35,9 +35,16 @@ class BlogsController < ApplicationController
   def show
     redirect_if_not_logged_in
     @blog = Blog.find_by_id(params[:id])
-    redirect_to '/' if !@blog
   end
 
+  def delete
+    redirect_if_not_logged_in
+    @blog = Blog.find_by_id(params[:id])
+    if @blog.user == current_user
+      @blog.delete
+    end
+    redirect to '/'
+  end
   private
 
   def blog_params

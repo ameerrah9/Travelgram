@@ -9,6 +9,7 @@
 <% if @blogs.empty? %>
   <h2>No blogs yet, create a blog now! <%= link_to "Share", new_blog_path %></h2>
 <% else %>
+
   <%= render partial: "blogs", locals: {blogs: @blogs} %>
 
 <% end %>

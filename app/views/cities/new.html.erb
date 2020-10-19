@@ -1,0 +1,17 @@
+<% if @city.blog %>
+  <h1>New City for <%=@city.blog.title %>!</h1>
+<% else %>
+  <h1>New City!</h1>
+<% end %>
+
+<%= render partial: "layouts/errors", locals: {object: @city} %>
+
+
+<%= form_for([@city.blog,@city) do |f|%>
+
+  <%= f.text_field :name %>
+  <br>
+
+  <% f.submit %>
+
+<% end %>

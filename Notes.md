@@ -27,4 +27,10 @@ Cities (Catergories)
     - name
     - has_many :blogs
     - has_many :users, through :blogs
+    - User are able to create a city with a blog if the city doesn't already exist
+    
+    
+ Assignments:
+    - Work on being able to create a city with a blog if the city doesn't exist
+    - Work on being able to go to a users blog page (see only their blogs)
     
