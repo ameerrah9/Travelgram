@@ -1,0 +1,5 @@
+<div class="mb-3 p-3 border bg-white">
+  <%= link_to blog.title, blog_path(blog)%>
+  • Created at <%= blog.updated_at.strftime("%I:%M %p on %m/%d/%Y") %>
+  • <%= link_to blog.comments.size, comments_path %> Comments
+</div>
