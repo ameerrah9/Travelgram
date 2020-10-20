@@ -10,7 +10,10 @@ module BlogsHelper
   def display_blogs
 
     if @user.blogs.empty?
-      content_tag(:h2, "No blogs yet, create a blog now!<a href='/blogs/new'>Share</a>")
+      content_tag(:h2) do
+        "No blogs yet, create a blog now!".html_safe +
+          link_to('Share', new_blog_path)
+      end
     else
       content_tag(:h2, "Your Blogs:")
       render partial: "blogs/blogs", locals: {blogs: @user.blogs}

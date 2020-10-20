@@ -1,5 +1,7 @@
 <div>
   <% blogs.each do |b| %>
-    <div><%= link_to b.title, blog_path(b)%> • Created at <%= b.updated_at.strftime("%I:%M %p on %m/%d/%Y")%> • <%= link_to b.comments.size, comments_path %> Comments</div>
+    <div class="mb-3 p-3 border bg-white">
+      <%= link_to b.title, blog_path(b)%> • Created at <%= b.updated_at.strftime("%I:%M %p on %m/%d/%Y")%> • <%= link_to b.comments.size, comments_path %> Comments
+    </div>
   <% end %>
 </div>
