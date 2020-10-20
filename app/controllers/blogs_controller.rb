@@ -12,10 +12,10 @@ class BlogsController < ApplicationController
 
   def index
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-      @blogs = @user.blogs.alpha
+      @blogs = @user.blogs.newest
     else
       @error = "User doesn't exist" if params[:user_id]
-      @blogs = Blog.alpha
+      @blogs = Blog.newest
     end
     if params[:q] && !params[:q].empty?
       @blogs = @blogs.search(params[:q].downcase)

@@ -11,7 +11,6 @@ class Blog < ApplicationRecord
     where("LOWER(title) LIKE ?", "%#{params}%")
   end
 
-  scope :alpha, -> { order(:title) }
   scope :most_comments, -> {left_joins(:comments).group('blogs.id').order('count(comments.blog_id) desc')}
 
   def city_attributes=(attr)
