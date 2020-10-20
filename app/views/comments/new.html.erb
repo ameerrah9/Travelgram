@@ -13,7 +13,7 @@
     <%= f.label :blog %>
     <%= f.collection_select :blog_id, Blog.all, :id, :title %>
   <% else %>
-    <% f.hidden_field :blog_id %>
+    <%= f.hidden_field :blog_id %>
   <% end %>
   <br>
   <br>
@@ -21,6 +21,6 @@
   <%= f.label :content %>
   <%= f.text_area :content %><br>
   <br>
-  <% f.submit %>
+  <%= f.submit %>
 
 <% end %>
