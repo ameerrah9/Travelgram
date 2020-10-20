@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
 
     if @comment.save
-      redirect_to comments_path
+      redirect_to @comment.blog
     else
       render :new
     end
