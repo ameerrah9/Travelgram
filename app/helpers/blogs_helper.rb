@@ -15,8 +15,8 @@ module BlogsHelper
           link_to('Share', new_blog_path)
       end
     else
-      content_tag(:h2, "Your Blogs:")
-      render partial: "blogs/blogs", locals: {blogs: @user.blogs}
+      content_tag(:h2, "Your Blogs:") +
+        render(@user.blogs)
     end
   end
 end
