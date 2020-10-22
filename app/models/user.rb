@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :blogs
-  has_many :comments
+  has_many :blogs, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :commented_trips, through: :comments,
     source: :blog
   has_secure_password
