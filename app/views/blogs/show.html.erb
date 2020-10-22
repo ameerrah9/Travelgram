@@ -9,15 +9,14 @@
 
 <div><%= @blog.content %></div><br><br>
 
-<p><%= link_to 'Add a New Comment', new_blog_comment_path(@blog) %></p><br>
+<p><%= link_to 'Add a New Comment', new_blog_comment_path(@blog), class: 'btn btn-secondary' %></p><br>
 
 <% if !@blog.comments.empty? %>
-  <p><%= link_to 'See All Comments', blog_comments_path(@blog) %></p><br><br>
-  <h4>Recently Added Comments:</h4><br><br>
+  <h4> All Comments:</h4><br><br>
 
   <% @blog.comments.order(updated_at: :desc).limit(3).each do |c| %>
     <div>
-      <strong><%=c.user.username%></strong><br>
+      <strong><%=c.user.username%></strong><br><br>
 
       <p><%= link_to c.content, blog_comment_path(@blog,c)%> at <%= c.updated_at.strftime("%I:%M %p on %m/%d/%Y")%></p><br>
     </div><br>

@@ -12,16 +12,32 @@
   <body>
   <div>
     <% if logged_in? %>
-      <%= link_to "Add a Blog", new_blog_path %> •
-      <%= link_to "View All Blogs", blogs_path %> •
-      <%= link_to "Home", root_path %> •
-      <%= button_to "Logout", logout_path, method: :delete %>
-      <%= link_to "View My Blogs", user_blogs_path(current_user) %> •
-
-
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <%= link_to "Add a Blog", new_blog_path, class: "nav", class: 'btn btn-light btn-sm'%>  •
+        </li>
+        <li class="nav-item">
+          <%= link_to "View All Blogs", blogs_path, class: 'btn btn-light btn-sm'%>  •
+        </li>
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: 'btn btn-light btn-sm'%>  •
+        </li>
+        <li class="nav-item">
+          <%= button_to "Logout", logout_path, method: :delete, class: 'btn btn-light btn-sm'%>
+        </li>
+        <li class="nav-item">
+           • <%= link_to "View My Blogs", user_blogs_path(current_user), class: 'btn btn-light btn-sm'%>
+        </li>
+      </ul>
   <% else %>
-      <%= link_to "Log In", login_path %> •
-      <%= link_to "Sign Up", signup_path %>
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+          <%= link_to "Log In", login_path, class: 'btn btn-primary' %> •
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Up", signup_path, class: 'btn btn-primary' %>
+        </li>
+      </ul>
     <% end %>
   </div>
 
