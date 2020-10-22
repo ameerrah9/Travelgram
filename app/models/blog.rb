@@ -4,7 +4,7 @@ class Blog < ApplicationRecord
   has_many :comments
   has_many :users, through: :comments
   validates :title, :content, presence: true
-  validates :city, uniqueness: true, presence: true
+  validates :city, presence: true
   validate :too_many_blogs
 
   def self.search(params)

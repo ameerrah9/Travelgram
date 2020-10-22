@@ -1,17 +1,18 @@
 <% if @comment.blog %>
-  <h1>New Comment for <%=@comment.blog.title %>!</h1>
+  <h1>New Comment for <%=@comment.blog.title %>!</h1><br>
 <% else %>
-  <h1>New Comment!</h1>
+  <h1>New Comment!</h1><br>
 <% end %>
 
-<%= render partial: "layouts/errors", locals: {object: @comment} %>
+<%= render partial: "layouts/errors", locals: {object: @comment} %><br>
 
 
 <%= form_for([@comment.blog,@comment]) do |f|%>
 
   <%if !@comment.blog %>
+    <br>
     <%= f.label :blog %>
-    <%= f.collection_select :blog_id, Blog.all, :id, :title %>
+    <%= f.collection_select :blog_id, Blog.all, :id, :title %><br>
   <% else %>
     <%= f.hidden_field :blog_id %>
   <% end %>
