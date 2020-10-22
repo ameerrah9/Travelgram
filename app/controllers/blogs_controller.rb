@@ -42,7 +42,7 @@ class BlogsController < ApplicationController
     if @blog.user == current_user
       @blog.destroy
     end
-    redirect to '/'
+    redirect_to @blog.user
   end
 
   def edit
