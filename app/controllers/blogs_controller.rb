@@ -1,5 +1,7 @@
 class BlogsController < ApplicationController
   before_action :redirect_if_not_logged_in
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:update, :destroy]
 
   def new
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
@@ -31,31 +33,17 @@ class BlogsController < ApplicationController
     end
   end
 
-  def show
-    redirect_if_not_logged_in
-    @blog = Blog.find_by_id(params[:id])
-  end
+  def show; end
 
   def destroy
-    redirect_if_not_logged_in
-    @blog = Blog.find_by_id(params[:id])
-    if @blog.user == current_user
-      @blog.destroy
-    end
-    redirect to '/'
+    @blog.destroy
+
+    redirect_to current_user
   end
 
-  def edit
-    @blog = Blog.find_by_id(params[:id])
-    if !@blog
-      flash[:message] = "Blog was not found"
-      redirect_to blogs_path
-    end
-  end
+  def edit; end
 
   def update
-    @blog = Blog.find_by_id(params[:id])
-    redirect_to blogs_path if @blog.user != current_user
     if @blog.update(blog_params)
       redirect_to blog_path(@blog)
     else
@@ -64,6 +52,14 @@ class BlogsController < ApplicationController
   end
 
   private
+
+  def set_blog
+    @blog = Blog.find(params[:id])
+  end
+
+  def authenticate_user!
+    redirect_to blogs_path if @blog.user != current_user
+  end
 
   def blog_params
     params.require(:blog).permit(:title, :content, :user_id, :city_id)

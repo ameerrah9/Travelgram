@@ -1,7 +1,7 @@
 class Blog < ApplicationRecord
   belongs_to :user
   belongs_to :city
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :users, through: :comments
   validates :title, :content, presence: true
   validates :city, presence: true
