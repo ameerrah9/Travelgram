@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :users do
 
-    resources :blogs, only: [:new, :create, :index, :show]
+    resources :blogs, only: [:new, :create, :index, :show, :destroy]
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

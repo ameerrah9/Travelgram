@@ -36,14 +36,33 @@ class BlogsController < ApplicationController
     @blog = Blog.find_by_id(params[:id])
   end
 
-  def delete
+  def destroy
     redirect_if_not_logged_in
     @blog = Blog.find_by_id(params[:id])
     if @blog.user == current_user
-      @blog.delete
+      @blog.destroy
     end
     redirect to '/'
   end
+
+  def edit
+    @blog = Blog.find_by_id(params[:id])
+    if !@blog
+      flash[:message] = "Blog was not found"
+      redirect_to blogs_path
+    end
+  end
+
+  def update
+    @blog = Blog.find_by_id(params[:id])
+    redirect_to blogs_path if @blog.user != current_user
+    if @blog.update(blog_params)
+      redirect_to blog_path(@blog)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def blog_params
