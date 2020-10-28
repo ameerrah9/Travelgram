@@ -4,4 +4,9 @@ class City < ApplicationRecord
 
   validates :name, presence: true
 
+  scope :by_name, -> { order(name: :asc) }
+
+  def to_s
+    name
+  end
 end

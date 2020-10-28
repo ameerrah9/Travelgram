@@ -1,8 +1,5 @@
+<h4>All Cities:</h4>
 
-  <h4> All Cities:</h4><br><br>
+<br><br>
 
-  <%= @city.each do |c| %>
-    <div>
-      <p><%= link_to c.name, city_path(c)%></p><br>
-    </div><br>
-<% end %>
+<%= render @cities %>
