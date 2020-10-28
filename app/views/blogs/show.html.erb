@@ -7,7 +7,7 @@
   <h4><%= button_to 'Delete', @blog,  method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></h4><br>
 <% end %>
 
-<div><%= @blog.content %></div><br><br>
+<div class="mb-3 p-3 border bg-white"><%= @blog.content %></div><br><br>
 
 <p><%= link_to 'Add a New Comment', new_blog_comment_path(@blog), class: 'btn btn-secondary' %></p><br>
 

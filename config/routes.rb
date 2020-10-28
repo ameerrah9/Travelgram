@@ -21,7 +21,6 @@ Rails.application.routes.draw do
    end
   resources :comments
   resources :users do
-
     resources :blogs, only: [:new, :create, :index, :show, :destroy]
   end
 
