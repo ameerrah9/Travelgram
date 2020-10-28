@@ -7,10 +7,10 @@ class CitiesController < ApplicationController
 
   def index
     if params[:user_id] && @user = User.find_by_id(params[:user_id])
-      @city = @user.city
+      @cities = @user.city.by_name
     else
       @error = "That city doesn't exist" if params[:blog_id]
-      @city = City.all
+      @cities = City.by_name
     end
   end
 
