@@ -25,11 +25,7 @@ class CitiesController < ApplicationController
   end
 
   def show
-      @city = City.find_by(id: params[:id])
-      if !@city
-        flash[:message] = "City was not found"
-        redirect_to city_path
-      end
+    @city = City.find(params[:id])
   end
 
   private
