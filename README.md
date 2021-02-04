@@ -1,4 +1,4 @@
-# Build a Rails App
+# Travelgram App
 
 ## Overview
 
